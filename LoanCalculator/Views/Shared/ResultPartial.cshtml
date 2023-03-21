@@ -1,0 +1,46 @@
+﻿@{
+    var result = ViewBag.Schedule;
+    if (result is not null && result is LoanCalculator.Models.Schedule schedule)
+    {
+        <section id="two" class="wrapper style3 fade-up">
+            <div class="inner">
+                <h2>График платежей</h2>
+                <table>
+                    @await Html.PartialAsync("ResultHeadersPartial")
+                    <tbody>
+                        @foreach (var payment in schedule.Payments)
+                        {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(n=>payment.Number)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(d=>payment.Date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(a=>payment.Amount)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(dbp=>payment.DebtBodyPayment)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(p=>payment.Percentages)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(db=>payment.DebtBalance)
+                                </td>
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+                <div class="InsideContent">
+                    <h3>Итоговая переплата: </h3>
+                    
+                    <h3>@schedule.TotalOverPayment</h3>
+                </div>
+            </div>
+        </section>
+    }
+}

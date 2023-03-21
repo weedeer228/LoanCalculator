@@ -1,0 +1,23 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+
+    @await Html.PartialAsync("MetaTagsPartial")
+    @await Html.PartialAsync("CssPartial")
+
+</head>
+<body class="is-preload">
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody();
+        </main>
+
+
+        @await Html.PartialAsync("Wrapper")
+    </div>
+
+    @await Html.PartialAsync("ScriptsPartial")
+
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+﻿@using LoanCalculator.Models
+@model DebtData
+
+<div id="wrapper">
+    <section id="intro" class="wrapper style1 fullscreen fade-up">
+        <section id="three" class="wrapper style1 fade-up">
+            <div class="inner">
+                <h2>Рассчитать аннуитентный займ</h2>
+                <p>Для рассчета введите сумму займа, срок займа и ставку</p>
+                <div class="split style1">
+                    <section>
+                        <form method="post">
+                            <div class="fields">
+                                <div class="field">
+                                    <label asp-for="Amount" class="label-control">сумма займа (руб)</label>
+                                    <input asp-for="Amount"
+                                           value="300000"
+                                           class="form-control"
+                                           onkeypress="return ((event.charCode >= 48 && event.charCode <= 57)||event.charCode===44) && !(event.keyCode === 44 && this.value.split(',').length === 2)" />
+                                </div>
+                                <div class="field">
+                                    <label asp-for="Term">срок займа</label>
+                                    <input asp-for="Term"
+                                           value="24"
+                                           id="term" />
+                                </div>
+                                <div class="field">
+                                    <label asp-for="Rate">ставка %</label>
+                                    <div class="InsideContent">
+                                        <input asp-for="Rate"
+                                               value="8,5"
+                                               onkeypress="return ((event.charCode >= 48 && event.charCode <= 57)||event.charCode===44) && !(event.keyCode === 44 && this.value.split(',').length === 2)"
+                                               class="form-control" />
+                                        <select asp-for="PercentType" asp-class="dropdown" style="max-width:25%">
+                                            <option value="ByYear">В год</option>
+                                            <option value="ByDay">В день</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="actions">
+                                <li>
+                                    <a href="" class="button submit">Рассчитать</a>
+                                </li>
+                            </ul>
+                        </form>
+                    </section>
+                    <section>
+                        <ul class="contact">
+                            <li>
+                                <h3>Address</h3>
+                                <span>
+                                    12345 Somewhere Road #654<br />
+                                    Nashville, TN 00000-0000<br />
+                                    USA
+                                </span>
+                            </li>
+                            <li>
+                                <h3>Email</h3>
+                                <a href="#">user@untitled.tld</a>
+                            </li>
+                            <li>
+                                <h3>Phone</h3>
+                                <span>(000) 000-0000</span>
+                            </li>
+                            <li>
+                                <h3>Social</h3>
+                                <ul class="icons">
+                                    <li>
+                                        <a href="#" class="icon brands fa-twitter">
+                                            <span class="label">Twitter</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="icon brands fa-facebook-f">
+                                            <span class="label">Facebook</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="icon brands fa-github">
+                                            <span class="label">GitHub</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="icon brands fa-instagram">
+                                            <span class="label">Instagram</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="icon brands fa-linkedin-in">
+                                            <span class="label">LinkedIn</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </section>
+    </section>
+    @await Html.PartialAsync("ResultPartial")
+</div>
